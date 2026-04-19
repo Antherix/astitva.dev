@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
-import { Mail, MapPin, Phone, Linkedin, Github, Twitter, FileText, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin, Github, Twitter, FileText, ExternalLink } from "lucide-react";
 import { TopBar } from "./TopBar";
 import { SkillChip } from "./SkillChip";
 import { SideNav, MobileTabStrip } from "./SideNav";
@@ -257,7 +257,7 @@ export function Portfolio() {
           <Section id="contact" index={6} title="Contact">
             <ul className="divide-y divide-[var(--hairline)] border-y border-[var(--hairline)]">
               <ContactRow icon={<Mail className="h-4 w-4" />} label="Email" value={PROFILE.email} href={`mailto:${PROFILE.email}`} />
-              <ContactRow icon={<Phone className="h-4 w-4" />} label="Phone" value={PROFILE.phone} href={`tel:${PROFILE.phone.replace(/\s/g, "")}`} />
+              <ContactEmailForm />
               <ContactRow icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/astitvakushwaha" href={PROFILE.linkedin} external />
               <ContactRow icon={<Github className="h-4 w-4" />} label="GitHub" value={`@${PROFILE.githubUser}`} href={PROFILE.github} external />
               <ContactRow icon={<Twitter className="h-4 w-4" />} label="X / Twitter" value={PROFILE.twitterHandle} href={PROFILE.twitter} external />
@@ -309,6 +309,66 @@ export function Portfolio() {
 
       <SearchPalette open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
+  );
+}
+
+function ContactEmailForm() {
+  const [senderName, setSenderName] = useState("");
+  const [message, setMessage] = useState("");
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const body = message.trim();
+    if (!body) return;
+    const name = senderName.trim();
+    const subject = name
+      ? `Portfolio message from ${name}`
+      : `Portfolio message — ${PROFILE.name}`;
+    const fullBody = name ? `${body}\n\n— ${name}` : body;
+    window.location.href = `mailto:${PROFILE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullBody)}`;
+  };
+
+  return (
+    <li>
+      <div className="flex flex-col gap-3 px-1 py-4 sm:flex-row sm:items-start sm:gap-4">
+        <span className="flex w-32 shrink-0 items-center gap-2 text-xs uppercase tracking-[0.15em] text-muted-foreground sm:items-start sm:pt-2.5">
+          <Send className="h-4 w-4 shrink-0" />
+          Message
+        </span>
+        <form onSubmit={submit} className="min-w-0 flex-1 space-y-3">
+          <input
+            type="text"
+            name="name"
+            autoComplete="name"
+            value={senderName}
+            onChange={(e) => setSenderName(e.target.value)}
+            placeholder="Your name (optional)"
+            className="w-full rounded-md border border-[var(--hairline)] bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-[var(--primary)]/40"
+          />
+          <textarea
+            name="message"
+            required
+            rows={4}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Write your message…"
+            className="w-full resize-y rounded-md border border-[var(--hairline)] bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-[var(--primary)]/40"
+          />
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <button
+              type="submit"
+              className="inline-flex w-fit items-center gap-2 rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+            >
+              <Send className="h-4 w-4" />
+              Open in email app
+            </button>
+            <p className="text-xs text-muted-foreground">
+              Opens your mail client with this message — nothing is sent from the site itself.
+            </p>
+          </div>
+        </form>
+      </div>
+    </li>
   );
 }
 

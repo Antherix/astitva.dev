@@ -18,7 +18,6 @@ export const PROFILE = {
   intro:
     "First-year B.Tech CSE student at IIIT Sonipat. I build things on the web, learn relentlessly, and ship in public — one small project at a time.",
   email: "astitvasingh0007@gmail.com",
-  phone: "+91 8400711259",
   location: "Delhi, India",
   github: "https://github.com/astitvakushwaha",
   githubUser: "astitvakushwaha",
