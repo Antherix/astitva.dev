@@ -257,11 +257,11 @@ export function Portfolio() {
           <Section id="contact" index={6} title="Contact">
             <ul className="divide-y divide-[var(--hairline)] border-y border-[var(--hairline)]">
               <ContactRow icon={<Mail className="h-4 w-4" />} label="Email" value={PROFILE.email} href={`mailto:${PROFILE.email}`} />
-              <ContactEmailForm />
               <ContactRow icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/astitvakushwaha" href={PROFILE.linkedin} external />
               <ContactRow icon={<Github className="h-4 w-4" />} label="GitHub" value={`@${PROFILE.githubUser}`} href={PROFILE.github} external />
               <ContactRow icon={<Twitter className="h-4 w-4" />} label="X / Twitter" value={PROFILE.twitterHandle} href={PROFILE.twitter} external />
               <ContactRow icon={<MapPin className="h-4 w-4" />} label="Location" value={PROFILE.location} />
+              <ContactEmailForm />
             </ul>
           </Section>
 
