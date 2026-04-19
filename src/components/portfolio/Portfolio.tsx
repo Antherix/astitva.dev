@@ -260,7 +260,7 @@ export function Portfolio() {
               <ContactRow icon={<Phone className="h-4 w-4" />} label="Phone" value={PROFILE.phone} href={`tel:${PROFILE.phone.replace(/\s/g, "")}`} />
               <ContactRow icon={<Linkedin className="h-4 w-4" />} label="LinkedIn" value="/astitvakushwaha" href={PROFILE.linkedin} external />
               <ContactRow icon={<Github className="h-4 w-4" />} label="GitHub" value={`@${PROFILE.githubUser}`} href={PROFILE.github} external />
-              <ContactRow icon={<Twitter className="h-4 w-4" />} label="X / Twitter" value="@astitvakushwaha" href={PROFILE.twitter} external />
+              <ContactRow icon={<Twitter className="h-4 w-4" />} label="X / Twitter" value={PROFILE.twitterHandle} href={PROFILE.twitter} external />
               <ContactRow icon={<MapPin className="h-4 w-4" />} label="Location" value={PROFILE.location} />
             </ul>
           </Section>
