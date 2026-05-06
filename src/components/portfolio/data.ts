@@ -88,7 +88,7 @@ export const EXPERIENCE = [
   {
     role: "Open Source Contributor",
     org: "Social Summer of Code (SSOC)",
-    period: "Selected Contributor · Jun 2026 — Aug 2026",
+    period: "Jun 2026 — Aug 2026",
     bullets: [
       "Selected as a contributor for SSOC Season 5, a national open-source program.",
       "Coding window runs from June 1 to August 1, focused on contribution, collaboration, and shipping quality PRs.",
